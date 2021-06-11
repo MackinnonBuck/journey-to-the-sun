@@ -466,7 +466,7 @@ public:
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		double frameTime = get_last_elapsed_time();
-		//frameTime *= 0.5f;
+		frameTime *= 0.5f;
 
 		m_editorState.totalTime += frameTime * m_editorState.playbackSpeed;
 
