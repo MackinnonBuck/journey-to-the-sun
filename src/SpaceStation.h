@@ -19,8 +19,12 @@ public:
 	void init(const std::string& resourceDirectory) override;
 	void render(const glm::mat4& pMatrix, const glm::mat4& vMatrix, float deltaTime) override;
 
+	glm::mat4 computeModelMatrix() const;
+
 private:
 	std::shared_ptr<Shape> m_shape;
 	std::shared_ptr<Program> m_shaderProgram;
+
+	GLuint m_albedoTextureId;
 };
 

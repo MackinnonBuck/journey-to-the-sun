@@ -23,6 +23,7 @@ void Ship::init(const std::string& resourceDirectory)
 
     setBaseRotation(glm::rotate(glm::quat(1.0f, 0.0f, 0.0f, 0.0f), glm::pi<float>() * 0.5f, glm::vec3(1.0f, 0.0f, 0.0f)));
 
+    setInterpolationMode(InterpolationMode::LINEAR);
     addKeyframes();
 }
 
@@ -52,6 +53,7 @@ void Ship::render(const glm::mat4& pMatrix, const glm::mat4& vMatrix, const glm:
     glUniform3fv(m_shaderProgram->getUniform("lightPositions"), LIGHT_COUNT, &editorState.lightPositions[0][0]);
     glUniform3fv(m_shaderProgram->getUniform("lightColors"), LIGHT_COUNT, &editorState.lightColors[0][0]);
 	glUniform3fv(m_shaderProgram->getUniform("viewPos"), 1, &cameraPosition[0]);
+    glUniform1i(m_shaderProgram->getUniform("useAlbedoMap"), 0);
     glUniform3f(m_shaderProgram->getUniform("albedo"), 2.0f, 2.0f, 2.0f);
     glUniform1f(m_shaderProgram->getUniform("roughness"), 0.05f);
     glUniform1f(m_shaderProgram->getUniform("metallic"), 1.0f);
@@ -68,30 +70,30 @@ void Ship::render(const glm::mat4& pMatrix, const glm::mat4& vMatrix, const glm:
 void Ship::addKeyframes()
 {
 	addPositionKeyframes(0, {
-        Keyframe({374.0000, 2.5851}, {373.0000, 2.5851}, {375.0000, 2.5851}),
+        Keyframe({1000.0000, 2.5851}, {373.0000, 2.5851}, {375.0000, 2.5851}),
 	});
 
 	addPositionKeyframes(1, {
-        Keyframe({374.0000, -3.5971}, {373.0000, -3.5971}, {375.0000, -3.5971}),
+        Keyframe({1000.0000, -3.5971}, {373.0000, -3.5971}, {375.0000, -3.5971}),
 	});
 
 	addPositionKeyframes(2, {
-        Keyframe({374.0000, 3.6427}, {373.0000, 3.6427}, {375.0000, 3.6427}),
+        Keyframe({1000.0000, 3.6427}, {373.0000, 3.6427}, {375.0000, 3.6427}),
 	});
 
 	addRotationKeyframes(0, {
-        Keyframe({374.0000, 0.2643}, {373.0000, 0.2643}, {375.0000, 0.2643}),
+        Keyframe({1000.0000, 0.2643}, {373.0000, 0.2643}, {375.0000, 0.2643}),
 	});
     
 	addRotationKeyframes(1, {
-        Keyframe({374.0000, -0.3877}, {373.0000, -0.3877}, {375.0000, -0.3877}),
+        Keyframe({1000.0000, -0.3877}, {373.0000, -0.3877}, {375.0000, -0.3877}),
 	});
 
 	addRotationKeyframes(2, {
-        Keyframe({374.0000, 0.8560}, {373.0000, 0.8560}, {375.0000, 0.8560}),
+        Keyframe({1000.0000, 0.8560}, {373.0000, 0.8560}, {375.0000, 0.8560}),
 	});
 
 	addRotationKeyframes(3, {
-        Keyframe({374.0000, -0.2169}, {373.0000, -0.2169}, {375.0000, -0.2169}),
+        Keyframe({1000.0000, -0.2169}, {373.0000, -0.2169}, {375.0000, -0.2169}),
 	});
 }

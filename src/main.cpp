@@ -278,10 +278,10 @@ public:
 		glUniform1i(Tex1Location, 0);
 		glUniform1i(Tex2Location, 1);
 
-		//glUseProgram(pbrProgram->pid);
-		//GLuint skyLocation = glGetUniformLocation(pbrProgram->pid, "skybox");
-		//glUniform1i(skyLocation, 0);
-		//glUseProgram(0);
+		glUseProgram(pbrProgram->pid);
+		GLuint skyLocation = glGetUniformLocation(pbrProgram->pid, "albedoMap");
+		glUniform1i(skyLocation, 1);
+		glUseProgram(0);
 
 		renderPipeline = std::make_shared<RenderPipeline>(resourceDirectory + "/");
 
@@ -446,7 +446,7 @@ public:
 		pbrProgram->addUniform("V");
 		pbrProgram->addUniform("M");
 		//m_shaderProgram->addUniform("LS");
-		//m_shaderProgram->addUniform("albedoMap");
+		pbrProgram->addUniform("albedoMap");
 		//m_shaderProgram->addUniform("roughnessMap");
 		//m_shaderProgram->addUniform("metallicMap");
 		//m_shaderProgram->addUniform("aoMap");
@@ -457,6 +457,7 @@ public:
 		pbrProgram->addUniform("lightPositions");
 		pbrProgram->addUniform("lightColors");
 		pbrProgram->addUniform("viewPos");
+		pbrProgram->addUniform("useAlbedoMap");
 		//pbrProgram->addUniform("skybox");
 		pbrProgram->addAttribute("vertPos");
 		pbrProgram->addAttribute("vertNor");
