@@ -12,8 +12,8 @@ in vec2 TexCoords;
 //uniform samplerCube skybox;
 
 // Textures
-//uniform sampler2D albedoMap;
-//uniform sampler2D roughnessMap;
+uniform sampler2D albedoMap;
+uniform sampler2D roughnessMap;
 //uniform sampler2D metallicMap;
 //uniform sampler2D aoMap;
 
@@ -22,6 +22,7 @@ uniform vec3 albedo;
 uniform float roughness;
 uniform float metallic;
 uniform float ao;
+uniform bool useAlbedoMap;
 // const float ao = 1.0;
 
 const int LIGHT_COUNT = 1;
@@ -126,12 +127,15 @@ void main() {
 	//float roughness = texture(roughnessMap, TexCoords).r * 0.98 + 0.01;
 	//float ao = texture(aoMap, TexCoords).r;
 
+	vec3 albedoVal = useAlbedoMap ? texture(albedoMap, TexCoords).rgb : albedo;
+	albedoVal *= 5.0f;
+
 	vec3 N = normalize(Normal);
 	vec3 V = normalize(viewPos - WorldPos);
 
 	vec3 F0 = vec3(0.04);
 	//vec3 F0 = vec3(0.5);
-	F0 = mix(F0, albedo, metallic);
+	F0 = mix(F0, albedoVal, metallic);
 
 	// Reflection part
 	vec3 I = normalize(WorldPos - viewPos);
@@ -164,24 +168,24 @@ void main() {
 		// Specular brightness
 		vec3 numerator = NDF * G * F;
 		float denominator = 4.0 * max(dot(N, V), 0.0) * max(dot(N, L), 0.0);
-		vec3 specular = numerator / max(denominator, 0.001) + (0.5 * albedo + 0.5 * reflection * (0.01 + 0.99 * metallic));
+		vec3 specular = numerator / max(denominator, 0.001) + (0.5 * albedoVal + 0.5 * reflection * (0.01 + 0.99 * metallic));
 
 		// Apply shadows to block specular reflection
 		//specular *= getShadeValue();
 
 		// Add to outgoing radiance Lo
 		float NdotL = max(dot(N, L), 0.0);
-		Lo += (kD * albedo / PI + specular) * radiance * NdotL;
+		Lo += (kD * albedoVal / PI + specular) * radiance * NdotL;
 		//Lo *= getShadeValue();// * 0.75 + 0.25;
 	}
 
 	// Final color factor combination
-	vec3 ambient = vec3(0.01) * albedo * ao;
+	vec3 ambient = vec3(0.01) * albedoVal * ao;
 	vec3 color = ambient + Lo;
 
 	// Gamma correction
 	color = color / (color + vec3(1.0));
 	color = pow(color, vec3(1.0/2.2));
 
-	FragColor = vec4(color, 1.0);
+	FragColor = vec4(color * 1.5, 1.0);
 }

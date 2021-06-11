@@ -87,7 +87,7 @@ public:
 
 	EditorState m_editorState =
 	{
-		499.0f / 30.0f,					// Total time
+		0.0f,							// Total time
 		0.0f,							// Playback speed
 		-1,								// Selected actor index
 		glm::vec3(0.0f, 0.0f, 0.0f),	// Camera position
@@ -278,10 +278,10 @@ public:
 		glUniform1i(Tex1Location, 0);
 		glUniform1i(Tex2Location, 1);
 
-		//glUseProgram(pbrProgram->pid);
-		//GLuint skyLocation = glGetUniformLocation(pbrProgram->pid, "skybox");
-		//glUniform1i(skyLocation, 0);
-		//glUseProgram(0);
+		glUseProgram(pbrProgram->pid);
+		GLuint skyLocation = glGetUniformLocation(pbrProgram->pid, "albedoMap");
+		glUniform1i(skyLocation, 1);
+		glUseProgram(0);
 
 		renderPipeline = std::make_shared<RenderPipeline>(resourceDirectory + "/");
 
@@ -315,7 +315,7 @@ public:
 		auto ship = std::make_shared<Ship>(pbrProgram, Texture2, m_editorState, "Test");
 		auto spaceStation = std::make_shared<SpaceStation>(pbrProgram, m_editorState, "SpaceStation");
 		m_actors.push_back(spaceStation);
-		m_cameraActor = std::make_shared<CameraActor>(*spaceStation, m_editorState, "Camera_unanimated");
+		m_cameraActor = std::make_shared<CameraActor>(*ship, m_editorState, "Camera_unanimated");
 		m_actors.push_back(ship);
 		m_actors.push_back(std::make_shared<Sun>(sunShape, m_editorState, "Sun"));
 		m_actors.push_back(m_cameraActor);
@@ -446,7 +446,7 @@ public:
 		pbrProgram->addUniform("V");
 		pbrProgram->addUniform("M");
 		//m_shaderProgram->addUniform("LS");
-		//m_shaderProgram->addUniform("albedoMap");
+		pbrProgram->addUniform("albedoMap");
 		//m_shaderProgram->addUniform("roughnessMap");
 		//m_shaderProgram->addUniform("metallicMap");
 		//m_shaderProgram->addUniform("aoMap");
@@ -457,6 +457,7 @@ public:
 		pbrProgram->addUniform("lightPositions");
 		pbrProgram->addUniform("lightColors");
 		pbrProgram->addUniform("viewPos");
+		pbrProgram->addUniform("useAlbedoMap");
 		//pbrProgram->addUniform("skybox");
 		pbrProgram->addAttribute("vertPos");
 		pbrProgram->addAttribute("vertNor");
@@ -517,14 +518,17 @@ public:
 		// ...but we overwrite it (optional) with a perspective projection.
 		//P = glm::perspective((float)(3.14159 / 4.), (float)((float)width/ (float)height), 0.1f, 1000.0f); //so much type casting... GLM metods are quite funny ones
 		P = glm::perspective(glm::radians(39.6f), (float)((float)width/ (float)height), 0.1f, 2000.0f); //so much type casting... GLM metods are quite funny ones
-		auto sangle = -3.1415926f / 2.0f;
-		glm::mat4 RotateXSky = glm::rotate(glm::mat4(1.0f), sangle, glm::vec3(1.0f, 0.0f, 0.0f));
-		glm::vec3 camp = -m_editorState.cameraPosition;
-		glm::mat4 TransSky = glm::translate(glm::mat4(1.0f), camp);
-		glm::mat4 SSky = glm::scale(glm::mat4(1.0f), glm::vec3(0.8f, 0.8f, 0.8f));
 
-		M = TransSky  * RotateXSky * SSky;
+		constexpr float halfPi = glm::pi<float>() * 0.5f;
+		float fov = 39.6f / aspect;
+		P = glm::perspective((float)(fov / 90. * halfPi), (float)(aspect), 1.f, 10000.0f); //so much type casting... GLM metods are quite funny ones
 
+		// Skybox
+		glm::mat4 skyRotated = glm::rotate(glm::mat4(1), halfPi, vec3(1, 0, 0));
+		glm::mat4 skyTranslated = glm::translate(glm::mat4(1.0f), -m_editorState.cameraPosition);
+		glm::mat4 skyScaled = glm::scale(glm::mat4(1.0f), glm::vec3(2, 2, 2));
+		M = skyTranslated * skyRotated * skyScaled;
+		
 		// Draw the sky using GLSL.
 		skyprog->bind();		
 		glUniformMatrix4fv(skyprog->getUniform("P"), 1, GL_FALSE, &P[0][0]);

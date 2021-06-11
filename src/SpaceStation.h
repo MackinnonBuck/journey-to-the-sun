@@ -22,5 +22,7 @@ public:
 private:
 	std::shared_ptr<Shape> m_shape;
 	std::shared_ptr<Program> m_shaderProgram;
+
+	GLuint m_albedoTextureId;
 };
 

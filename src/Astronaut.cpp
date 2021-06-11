@@ -31,6 +31,7 @@ void Astronaut::render(const glm::mat4& pMatrix, const glm::mat4& vMatrix, const
     glUniform3fv(m_shaderProgram->getUniform("lightPositions"), LIGHT_COUNT, &editorState.lightPositions[0][0]);
     glUniform3fv(m_shaderProgram->getUniform("lightColors"), LIGHT_COUNT, &editorState.lightColors[0][0]);
 	glUniform3fv(m_shaderProgram->getUniform("viewPos"), 1, &cameraPosition[0]);
+	glUniform1i(m_shaderProgram->getUniform("useAlbedoMap"), 0);
     glUniform3f(m_shaderProgram->getUniform("albedo"), 2.0f, 2.0f, 2.0f);
     glUniform1f(m_shaderProgram->getUniform("roughness"), 0.05f);
     glUniform1f(m_shaderProgram->getUniform("metallic"), 1.0f);
