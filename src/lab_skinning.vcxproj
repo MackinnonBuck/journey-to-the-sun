@@ -165,6 +165,7 @@
     <ClCompile Include="..\ext\glad\src\glad.c" />
     <ClCompile Include="AnimatedActor.cpp" />
     <ClCompile Include="Asteroid.cpp" />
+    <ClCompile Include="Astronaut.cpp" />
     <ClCompile Include="RenderPipeline.cpp" />
     <ClCompile Include="CameraActor.cpp" />
     <ClCompile Include="Clip.cpp" />
@@ -261,6 +262,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AnimatedActor.h" />
     <ClInclude Include="Asteroid.h" />
+    <ClInclude Include="Astronaut.h" />
     <ClInclude Include="RenderPipeline.h" />
     <ClInclude Include="CameraActor.h" />
     <ClInclude Include="Clip.h" />

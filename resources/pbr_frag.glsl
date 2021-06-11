@@ -141,7 +141,7 @@ void main() {
 	// reflectance equation
 	vec3 Lo = vec3(0.0);
 
-	for (int i = 0; i < LIGHT_COUNT; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		// Calculate the light's radiance
 		vec3 L = normalize(lightPositions[i] - WorldPos);

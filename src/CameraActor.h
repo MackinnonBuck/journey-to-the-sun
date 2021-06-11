@@ -23,6 +23,8 @@ protected:
 
 private:
 	const AnimatedActor& m_target;
+	glm::vec3 m_position = glm::vec3(3.6779f, -8.0276f, 0.3533f);
+	//glm::vec3 m_position = glm::vec3(3.6779f, -18.0276f, 0.3533f);
 
 	void addKeyframes();
 };

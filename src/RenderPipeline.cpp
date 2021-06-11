@@ -143,7 +143,7 @@ void RenderPipeline::postRender()
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     bool horizontal = true, firstIteration = true;
-    int amount = 100;//30;
+    int amount = 500;//30;
 
     m_pBlurShader->bind();
 

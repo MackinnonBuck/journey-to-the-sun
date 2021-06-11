@@ -36,6 +36,7 @@ based on CPE/CSC 471 Lab base code Wood/Dunn/Eckhardt
 #include "ShipParticleSystem.h"
 #include "SpaceDustParticleSystem.h"
 #include "Sun.h"
+#include "Astronaut.h"
 
 #define MESHSIZE 1000
 
@@ -85,20 +86,21 @@ public:
 
 	EditorState m_editorState =
 	{
-		32.866666666f,//0.0f,							// Total time
+		4683 / 30.0f,							// Total time
 		0.0f,							// Playback speed
 		-1,								// Selected actor index
 		glm::vec3(0.0f, 0.0f, 0.0f),	// Camera position
 		false,							// Debugging enabled
 		{								// Light positions
-			glm::vec3(100.0f, 1000.0f, 0.0f),		// Sun
+			//glm::vec3(100.0f, 1000.0f, 0.0f),		// Sun
+			glm::vec3(0.0f, 681.32f, 0.0f),
 			glm::vec3(-100000000.0f),				// Plasma light (initially far away, simulating the engines being off)
 			glm::vec3(-100000000.0f),				// Plasma light
 			glm::vec3(-100000000.0f),				// Plasma light
 			glm::vec3(-100000000.0f),				// Plasma light
 		},
 		{								// Light colors
-			glm::vec3(1.0f, 1.0f, 0.7f) * 500000.0f,// Sun
+			glm::vec3(1.0f, 0.025f, 0.0f) * 5000000.0f,// Sun
 			glm::vec3(0.0f, 0.25f, 1.0f) * 4.0f,	// Plasma light
 			glm::vec3(0.0f, 0.25f, 1.0f) * 0.25f,	// Plasma light
 			glm::vec3(0.0f, 0.25f, 1.0f) * 0.25f,	// Plasma light
@@ -224,6 +226,10 @@ public:
 		shape->resize();
 		shape->init();
 
+		std::shared_ptr<Shape> sunShape = std::make_shared<Shape>();
+		sunShape->loadMesh(resourceDirectory + "/Scene7/Sun/Sun.obj");
+		sunShape->init();
+
 		plane = make_shared<Shape>();
 		plane->loadMesh(resourceDirectory + "/t800.obj");
 		plane->resize();
@@ -310,20 +316,21 @@ public:
 		auto ship = std::make_shared<Ship>(pbrProgram, Texture2, m_editorState, "Test");
 		m_cameraActor = std::make_shared<CameraActor>(*ship, m_editorState, "Camera_unanimated");
 		m_actors.push_back(ship);
-		m_actors.push_back(std::make_shared<Sun>(shape, m_editorState, "Sun"));
+		m_actors.push_back(std::make_shared<Sun>(sunShape, m_editorState, "Sun"));
 		m_actors.push_back(m_cameraActor);
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(0.0f, 0.0f, 0.0f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids0"));
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(0.0f, 70.0f, 0.0f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids1"));
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(13.5084f, 138.684f, -0.000079f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids2"));
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(27.0167f, 207.368f, -0.000158f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids3"));
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(40.5251f, 276.053f, -0.000236f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids4"));
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 344.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids5"));
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 414.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids6"));
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 484.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids7"));
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 554.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids8"));
-		m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 624.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids9"));
-		m_actors.push_back(std::make_shared<ShipParticleSystem>(*ship, m_editorState, "ShipParticleSystem"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(0.0f, 0.0f, 0.0f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids0"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(0.0f, 70.0f, 0.0f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids1"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(13.5084f, 138.684f, -0.000079f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids2"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(27.0167f, 207.368f, -0.000158f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids3"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(40.5251f, 276.053f, -0.000236f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids4"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 344.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids5"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 414.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids6"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 484.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids7"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 554.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids8"));
+		//m_actors.push_back(std::make_shared<Asteroid>(glm::vec3(54.0334f, 624.737f, -0.000315f), asteroidsShape, asteroidsProgram, m_editorState, "Asteroids9"));
+		//m_actors.push_back(std::make_shared<ShipParticleSystem>(*ship, m_editorState, "ShipParticleSystem"));
 		m_actors.push_back(std::make_shared<SpaceDustParticleSystem>(m_editorState, "SpaceDustParticleSystem"));
+		m_actors.push_back(std::make_shared<Astronaut>(pbrProgram, m_editorState, "Astronaut"));
 
 		for (auto& actor : m_actors)
 		{
@@ -388,26 +395,6 @@ public:
 		pplane->addAttribute("vertNor");
 		pplane->addAttribute("vertTex");
 
-		// Initialize the GLSL program.
-		//heightshader = std::make_shared<Program>();
-		//heightshader->setVerbose(true);
-		//heightshader->setShaderNames(resourceDirectory + "/height_vertex.glsl", resourceDirectory + "/height_frag.glsl", resourceDirectory + "/geometry.glsl");
-		//if (!heightshader->init())
-		//{
-		//	std::cerr << "One or more shaders failed to compile... exiting!" << std::endl;
-		//	exit(1);
-		//}
-		//heightshader->addUniform("P");
-		//heightshader->addUniform("V");
-		//heightshader->addUniform("M");
-		//heightshader->addUniform("camoff");
-		//heightshader->addUniform("campos");
-		//heightshader->addUniform("morph");
-		//heightshader->addAttribute("vertPos");
-		//heightshader->addAttribute("vertTex");
-		//heightshader->addUniform("bgcolor");
-		//heightshader->addUniform("renderstate");
-
 		skinningprog = std::make_shared<Program>();
 		skinningprog->setVerbose(true);
 		skinningprog->setShaderNames(resourceDirectory + "/skinning_vert.glsl", resourceDirectory + "/skinning_frag.glsl");
@@ -466,7 +453,7 @@ public:
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		double frameTime = get_last_elapsed_time();
-		//frameTime *= 0.5f;
+		frameTime *= 0.25f;
 
 		m_editorState.totalTime += frameTime * m_editorState.playbackSpeed;
 
@@ -508,14 +495,29 @@ public:
 			}
 		// ...but we overwrite it (optional) with a perspective projection.
 		//P = glm::perspective((float)(3.14159 / 4.), (float)((float)width/ (float)height), 0.1f, 1000.0f); //so much type casting... GLM metods are quite funny ones
-		P = glm::perspective(glm::radians(40.0f), (float)((float)width/ (float)height), 0.1f, 1000.0f); //so much type casting... GLM metods are quite funny ones
+		//P = glm::perspective(glm::radians(39.6f), (float)((float)width/ (float)height), 0.1f, 1000.0f); //so much type casting... GLM metods are quite funny ones
 		auto sangle = -3.1415926f / 2.0f;
-		glm::mat4 RotateXSky = glm::rotate(glm::mat4(1.0f), sangle, glm::vec3(1.0f, 0.0f, 0.0f));
-		glm::vec3 camp = -m_editorState.cameraPosition;
-		glm::mat4 TransSky = glm::translate(glm::mat4(1.0f), camp);
-		glm::mat4 SSky = glm::scale(glm::mat4(1.0f), glm::vec3(0.8f, 0.8f, 0.8f));
 
-		M = TransSky  * RotateXSky * SSky;
+		//float fov = 40 / aspect;
+		//P = glm::perspective((float)(fov / 90. * glm::pi<float>() * 0.5f), (float)(aspect), 1.f, 10000.0f); //so much type casting... GLM metods are quite funny ones
+
+		//glm::mat4 RotateXSky = glm::rotate(glm::mat4(1.0f), sangle, glm::vec3(1.0f, 0.0f, 0.0f));
+		//glm::vec3 camp = -m_editorState.cameraPosition;
+		//glm::mat4 TransSky = glm::translate(glm::mat4(1.0f), camp);
+		//glm::mat4 SSky = glm::scale(glm::mat4(1.0f), glm::vec3(0.8f, 0.8f, 0.8f));
+
+		//V = glm::mat4(camRotQuat) * cameraTranslationMatrix;
+		constexpr float halfPi = glm::pi<float>() * 0.5f;
+		float fov = 39.6f / aspect;
+		P = glm::perspective((float)(fov / 90. * halfPi), (float)(aspect), 1.f, 10000.0f); //so much type casting... GLM metods are quite funny ones
+
+		// Skybox
+		glm::mat4 skyRotated = glm::rotate(glm::mat4(1), halfPi, vec3(1, 0, 0));
+		glm::mat4 skyTranslated = glm::translate(glm::mat4(1.0f), -m_editorState.cameraPosition);
+		glm::mat4 skyScaled = glm::scale(glm::mat4(1.0f), glm::vec3(2, 2, 2));
+		M = skyTranslated * skyRotated * skyScaled;
+
+		//M = TransSky  * RotateXSky * SSky;
 
 		// Draw the sky using GLSL.
 		skyprog->bind();		

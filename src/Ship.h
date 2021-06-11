@@ -24,12 +24,8 @@ private:
 	GLuint m_skyboxTextureId;
 
 	std::shared_ptr<Shape> m_shape;
+	std::shared_ptr<Shape> m_tetherShape;
 	std::shared_ptr<Program> m_shaderProgram;
-
-	std::shared_ptr<SmartTexture> m_albedoTexture;
-	std::shared_ptr<SmartTexture> m_roughnessTexture;
-	std::shared_ptr<SmartTexture> m_metallicTexture;
-	std::shared_ptr<SmartTexture> m_aoTexture;
 
 	void addKeyframes();
 };
