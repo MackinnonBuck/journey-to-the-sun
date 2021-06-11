@@ -7,7 +7,8 @@ class CameraActor : public AnimatedActor
 public:
 	CameraActor(const AnimatedActor& target, EditorState& editorState, const std::string& name) :
 		AnimatedActor(editorState, name),
-		m_target(target)
+		m_target(target),
+		m_transform(glm::mat4(1.0f))
 	{
 	}
 
@@ -23,6 +24,7 @@ protected:
 
 private:
 	const AnimatedActor& m_target;
+	glm::mat4 m_transform;
 
 	void addKeyframes();
 };

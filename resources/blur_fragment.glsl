@@ -30,5 +30,7 @@ void main()
         }
     }
 
+    result = clamp(result, vec3(0, 0, 0), vec3(10, 10, 10));
+
     color = vec4(result, 1.0);
 }

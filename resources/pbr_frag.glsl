@@ -24,7 +24,7 @@ uniform float metallic;
 uniform float ao;
 // const float ao = 1.0;
 
-const int LIGHT_COUNT = 5;
+const int LIGHT_COUNT = 1;
 
 uniform vec3 lightPositions[LIGHT_COUNT];
 uniform vec3 lightColors[LIGHT_COUNT];
@@ -130,6 +130,7 @@ void main() {
 	vec3 V = normalize(viewPos - WorldPos);
 
 	vec3 F0 = vec3(0.04);
+	//vec3 F0 = vec3(0.5);
 	F0 = mix(F0, albedo, metallic);
 
 	// Reflection part

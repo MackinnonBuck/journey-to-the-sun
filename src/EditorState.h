@@ -2,7 +2,7 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
-constexpr size_t LIGHT_COUNT = 5;
+constexpr size_t LIGHT_COUNT = 1;
 
 struct EditorState
 {

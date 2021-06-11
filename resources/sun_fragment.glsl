@@ -7,7 +7,8 @@ out vec4 fragCol;
 
 void main()
 {
-	vec3 baseColor = vec3(1.0, 1.0, 0.5) * 3;
+	vec3 baseColor = vec3(1.0, 1.0, 0.5) * 5;
+	baseColor *= vec3(1.5, 0.9, 0.3);
 	fragCol = vec4(baseColor, 1.0);
 }
 

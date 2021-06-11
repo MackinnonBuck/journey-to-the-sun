@@ -18,6 +18,8 @@ void main()
 
     vec3 bloomColor = texture(blurTexture, vertex_tex).rgb;
 
+    bloomColor = clamp(bloomColor, vec3(0, 0, 0), vec3(1, 1, 1));
+
     if (bloom)
         hdrColor += bloomColor;
 

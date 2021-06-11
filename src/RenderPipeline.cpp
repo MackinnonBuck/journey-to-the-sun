@@ -143,7 +143,8 @@ void RenderPipeline::postRender()
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     bool horizontal = true, firstIteration = true;
-    int amount = 100;//30;
+    int amount = 500;//30;
+    //int amount = 100;//30;
 
     m_pBlurShader->bind();
 
@@ -175,6 +176,7 @@ void RenderPipeline::postRender()
     glActiveTexture(GL_TEXTURE0);
     //glBindTexture(GL_TEXTURE_2D, m_fxaaColorBuffer);
     glBindTexture(GL_TEXTURE_2D, m_primaryColorBuffer);
+    //glBindTexture(GL_TEXTURE_2D, m_hdrColorBuffer);
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, m_pingPongColorBuffers[!horizontal]);
 
@@ -183,6 +185,8 @@ void RenderPipeline::postRender()
     glBindVertexArray(0);
 
     m_pBloomShader->unbind();
+
+    glEnable(GL_DEPTH_TEST);
 }
 
 void RenderPipeline::loadShaders(const std::string& resourceDirectory)
