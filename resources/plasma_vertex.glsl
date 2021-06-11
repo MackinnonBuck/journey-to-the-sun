@@ -20,7 +20,9 @@ void main()
 	vec3 newVertPos = vertPos / (1 + vertex_age * 5);
 	//vec3 newVertPos = vertPos * (0.5 + vertex_age * 15);
 	vec4 pos = M * vec4(newVertPos,1.0) + vec4(instancePos.xyz, 0.0);
-	pos.y -= vertex_age * 10;
+	pos.x += vertex_age * 10;
+	pos.y += vertex_age * 5;
+	pos.z -= vertex_age * 2.5;
 	gl_Position = P * V * pos;
 	vertex_tex = vertTex;	
 }

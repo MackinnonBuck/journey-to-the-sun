@@ -297,6 +297,8 @@
     <None Include="..\resources\plasma_vertex.glsl" />
     <None Include="..\resources\post_fragment.glsl" />
     <None Include="..\resources\post_vertex.glsl" />
+    <None Include="..\resources\saturn_fragment.glsl" />
+    <None Include="..\resources\saturn_vertex.glsl" />
     <None Include="..\resources\shader_fragment.glsl" />
     <None Include="..\resources\shader_vertex.glsl" />
     <None Include="..\resources\skinning_frag.glsl" />

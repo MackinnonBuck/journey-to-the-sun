@@ -28,6 +28,7 @@ void SpaceDustParticleSystem::init(const std::string& resourceDirectory)
 	m_shaderProgram->addAttribute("vertPos");
 	m_shaderProgram->addAttribute("vertNor");
 	m_shaderProgram->addAttribute("vertTex");
+	m_shaderProgram->addUniform("time");
 	m_shaderProgram->addAttribute("instancePos");
 
 	glGenVertexArrays(1, &m_vertexArrayId);
@@ -147,6 +148,7 @@ void SpaceDustParticleSystem::render(const glm::mat4& pMatrix, const glm::mat4& 
 	glUniformMatrix4fv(m_shaderProgram->getUniform("P"), 1, GL_FALSE, &pMatrix[0][0]);
 	glUniformMatrix4fv(m_shaderProgram->getUniform("V"), 1, GL_FALSE, &vMatrix[0][0]);
 	glUniformMatrix4fv(m_shaderProgram->getUniform("M"), 1, GL_FALSE, &mMatrix[0][0]);
+	glUniform1f(m_shaderProgram->getUniform("time"), getEditorState().totalTime);
 	glUniform3fv(m_shaderProgram->getUniform("campos"), 1, &getEditorState().cameraPosition[0]);
 
 	glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr, INSTANCE_COUNT);

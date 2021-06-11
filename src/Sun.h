@@ -5,6 +5,7 @@
 #include "Actor.h"
 #include "Shape.h"
 #include "Program.h"
+#include "SmartTexture.h"
 
 class Sun : public Actor
 {
@@ -21,5 +22,7 @@ public:
 private:
 	std::shared_ptr<Shape> m_shape;
 	std::shared_ptr<Program> m_shaderProgram;
+
+	GLuint m_textureId;
 };
 

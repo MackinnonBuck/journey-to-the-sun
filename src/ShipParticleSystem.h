@@ -6,6 +6,8 @@
 #include "AnimatedActor.h"
 #include "Program.h"
 
+constexpr float PARTICLE_OFFSET_SCALE = 0.61f;
+
 class ShipParticleSystem : public Actor
 {
 public:
@@ -39,10 +41,10 @@ private:
 
 	glm::vec3 m_particleOffsets[4] =
 	{
-		glm::vec3(0.0f, 0.0f, 8.3f),
-		glm::vec3(0.0f, 1.9f, 5.5f),
-		glm::vec3(-2.175f, -0.6f, 5.5f),
-		glm::vec3(2.175f, -0.6f, 5.5f),
+		glm::vec3(0.0f, 0.0f, 8.3f) * PARTICLE_OFFSET_SCALE,
+		glm::vec3(0.0f, 1.9f, 5.5f) * PARTICLE_OFFSET_SCALE,
+		glm::vec3(-2.175f, -0.6f, 5.5f) * PARTICLE_OFFSET_SCALE,
+		glm::vec3(2.175f, -0.6f, 5.5f) * PARTICLE_OFFSET_SCALE,
 	};
 };
 

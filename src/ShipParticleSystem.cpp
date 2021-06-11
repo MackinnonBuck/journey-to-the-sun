@@ -202,7 +202,8 @@ void ShipParticleSystem::update(float deltaTime)
 			glBindBuffer(GL_ARRAY_BUFFER, m_instanceBufferId);
 
 			// We update the array back-to-front so the render order of the particles is correct when looking from the back of the ship.
-			glBufferSubData(GL_ARRAY_BUFFER, (INSTANCE_COUNT - 1 - (m_spawnedParticleCount % INSTANCE_COUNT)) * sizeof(glm::vec4), sizeof(glm::vec4), &newParticle);
+			//glBufferSubData(GL_ARRAY_BUFFER, (INSTANCE_COUNT - 1 - (m_spawnedParticleCount % INSTANCE_COUNT)) * sizeof(glm::vec4), sizeof(glm::vec4), &newParticle);
+			glBufferSubData(GL_ARRAY_BUFFER, (m_spawnedParticleCount % INSTANCE_COUNT) * sizeof(glm::vec4), sizeof(glm::vec4), &newParticle);
 
 			m_spawnedParticleCount++;
 		}

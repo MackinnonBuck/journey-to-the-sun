@@ -30,7 +30,7 @@ void main()
 	next_tcol.rgb *= next_tcol.a;
 
 	color = tcol + next_tcol;
-	color.rgb *= 3;
+	color.rgb *= 8;
 	color.a *= 0.5;
 	color.a /= (vertex_age * 50 + 1);
 

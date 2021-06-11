@@ -445,5 +445,11 @@
     <None Include="..\resources\sun_vertex.glsl">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\resources\saturn_fragment.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\saturn_vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
