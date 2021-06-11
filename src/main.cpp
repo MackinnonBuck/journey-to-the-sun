@@ -98,7 +98,7 @@ public:
 			glm::vec3(-100000000.0f),				// Plasma light
 		},
 		{								// Light colors
-			glm::vec3(1.0f, 1.0f, 0.7f) * 500000.0f,// Sun
+			glm::vec3(0.1f, 0.15f, 1.0f) * 500000.0f,// Sun
 			glm::vec3(0.0f, 0.25f, 1.0f) * 4.0f,	// Plasma light
 			glm::vec3(0.0f, 0.25f, 1.0f) * 0.25f,	// Plasma light
 			glm::vec3(0.0f, 0.25f, 1.0f) * 0.25f,	// Plasma light
@@ -466,7 +466,7 @@ public:
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		double frameTime = get_last_elapsed_time();
-		//frameTime *= 0.5f;
+		frameTime *= 0.5f;
 
 		m_editorState.totalTime += frameTime * m_editorState.playbackSpeed;
 

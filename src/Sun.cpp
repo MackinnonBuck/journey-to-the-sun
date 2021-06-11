@@ -24,7 +24,7 @@ void Sun::render(const glm::mat4& pMatrix, const glm::mat4& vMatrix, float delta
 {
 	glm::mat4 mMatrix =
 		glm::translate(glm::mat4(1.0f), glm::vec3(100.0f, 1000.0f, 0.0f)) *
-		glm::scale(glm::mat4(1.0f), glm::vec3(75.0f));
+		glm::scale(glm::mat4(1.0f), glm::vec3(15.0f));
 
 	m_shaderProgram->bind();
 	glUniformMatrix4fv(m_shaderProgram->getUniform("P"), 1, GL_FALSE, &pMatrix[0][0]);
