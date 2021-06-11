@@ -6,7 +6,7 @@
 #include "AnimatedActor.h"
 #include "Program.h"
 
-constexpr float PARTICLE_OFFSET_SCALE = 0.61f;
+constexpr float PARTICLE_OFFSET_SCALE = 0.37f;
 
 class ShipParticleSystem : public Actor
 {

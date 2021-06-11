@@ -27,7 +27,7 @@ void Sun::init(const std::string& resourceDirectory)
 
     //m_texture = SmartTexture::createTexture(resourceDirectory + "Scene3/Saturn/saturn.png");
 
-	std::string str = resourceDirectory + "/Scene3/Saturn/saturn.png";
+	std::string str = resourceDirectory + "/Scene5/Neptune/neptune.png";
 	int width, height, channels;
 	unsigned char* data = gettextureData(const_cast<char*>(str.c_str()), width, height, channels);
 	glGenTextures(1, &m_textureId);

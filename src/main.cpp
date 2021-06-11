@@ -85,7 +85,7 @@ public:
 
 	EditorState m_editorState =
 	{
-		1979.0f / 30.0f,//0.0f,							// Total time
+		2961.0f / 30.0f,//0.0f,							// Total time
 		0.0f,							// Playback speed
 		-1,								// Selected actor index
 		glm::vec3(0.0f, 0.0f, 0.0f),	// Camera position
@@ -289,8 +289,8 @@ public:
 		asteroidsShape->init();
 
 		auto planetShape = std::make_shared<Shape>();
-		auto planetMtlDir = resourceDirectory + "/Scene3/Saturn/";
-		planetShape->loadMesh(resourceDirectory + "/Scene3/Saturn/Saturn.obj", &asteroidsMtlDir, stbi_load);
+		auto planetMtlDir = resourceDirectory + "/Scene5/Neptune/";
+		planetShape->loadMesh(resourceDirectory + "/Scene5/Neptune/Neptune.obj", &asteroidsMtlDir, stbi_load);
 		planetShape->init();
 
 		//auto asteroidsProgram = std::make_shared<Program>();
@@ -470,7 +470,7 @@ public:
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		double frameTime = get_last_elapsed_time();
-		//frameTime *= 0.5f;
+		frameTime *= 0.25f;
 
 		m_editorState.totalTime += frameTime * m_editorState.playbackSpeed;
 

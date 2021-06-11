@@ -241,7 +241,7 @@ void ShipParticleSystem::render(const glm::mat4& pMatrix, const glm::mat4& vMatr
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_textureId);
 
-	glm::mat4 mMatrix = glm::scale(glm::mat4(1.0f), glm::vec3(0.25f, 0.25f, 0.25f)) * viMatrix;
+	glm::mat4 mMatrix = glm::scale(glm::mat4(1.0f), glm::vec3(0.09f)) * viMatrix;
 	glUniformMatrix4fv(m_shaderProgram->getUniform("P"), 1, GL_FALSE, &pMatrix[0][0]);
 	glUniformMatrix4fv(m_shaderProgram->getUniform("V"), 1, GL_FALSE, &vMatrix[0][0]);
 	glUniformMatrix4fv(m_shaderProgram->getUniform("M"), 1, GL_FALSE, &mMatrix[0][0]);

@@ -15,13 +15,15 @@ void Ship::init(const std::string& resourceDirectory)
     m_metallicTexture = SmartTexture::createTexture(resourceDirectory + "Materials/PaintedMetal/metallic.jpg");
     m_aoTexture = SmartTexture::createTexture(resourceDirectory + "Materials/PaintedMetal/ao.jpg");
 
-	auto mtlDir = resourceDirectory + "/Scene3/Ship/";
-	m_shape->loadMesh(resourceDirectory + "/Scene3/Ship/Ship.obj", &mtlDir, stbi_load);
+	auto mtlDir = resourceDirectory + "/Scene5/Ship/";
+	m_shape->loadMesh(resourceDirectory + "/Scene5/Ship/Ship.obj", &mtlDir, stbi_load);
 
 	//m_shape->resize();
 	m_shape->init();
 
     setBaseRotation(glm::rotate(glm::quat(1.0f, 0.0f, 0.0f, 0.0f), glm::pi<float>() * 0.5f, glm::vec3(1.0f, 0.0f, 0.0f)));
+
+    setInterpolationMode(InterpolationMode::LINEAR);
 
     addKeyframes();
 }
@@ -68,37 +70,37 @@ void Ship::render(const glm::mat4& pMatrix, const glm::mat4& vMatrix, const glm:
 void Ship::addKeyframes()
 {
     addPositionKeyframes(0, {
-        Keyframe({1979.0000, -292.5153}, {1815.6666, -292.5153}, {2142.3333, -292.5153}),
-        Keyframe({2469.0000, -308.0543}, {2305.6667, -308.0543}, {2632.3333, -308.0543}),
+        Keyframe({2961.0000, -306.3485}, {2894.3333, -306.3485}, {3027.6667, -306.3485}),
+        Keyframe({3161.0000, -308.6733}, {3094.3333, -308.6733}, {3227.6667, -308.6733}),
 	});
-    
+
 	addPositionKeyframes(1, {
-        Keyframe({1979.0000, 42.0697}, {1815.6666, 42.0697}, {2142.3333, 42.0697}),
-        Keyframe({2469.0000, 30.2410}, {2305.6667, 30.2410}, {2632.3333, 30.2410}),
+        Keyframe({2961.0000, 40.3574}, {2894.3333, 40.3574}, {3027.6667, 40.3574}),
+        Keyframe({3161.0000, 23.6766}, {3094.3333, 23.6766}, {3227.6667, 23.6766}),
 	});
 
 	addPositionKeyframes(2, {
-        Keyframe({1979.0000, 51.4929}, {1815.6666, 51.4929}, {2142.3333, 51.4929}),
-        Keyframe({2469.0000, 56.9790}, {2305.6667, 56.9790}, {2632.3333, 56.9790}),
+        Keyframe({2961.0000, 54.9331}, {2894.3333, 54.9331}, {3027.6667, 54.9331}),
+        Keyframe({3161.0000, 56.8328}, {3094.3333, 56.8328}, {3227.6667, 56.8328}),
 	});
 
 	addRotationKeyframes(0, {
-        Keyframe({1979.0000, 0.5959}, {1815.6666, 0.5959}, {2142.3333, 0.5959}),
-        Keyframe({2469.0000, 0.2249}, {2305.6667, 0.2249}, {2632.3333, 0.2249}),
+        Keyframe({2961.0000, 0.2249}, {2894.3333, 0.2249}, {3027.6667, 0.2249}),
+        Keyframe({3161.0000, 0.2249}, {3094.3333, 0.2249}, {3227.6667, 0.2249}),
 	});
 
 	addRotationKeyframes(1, {
-			Keyframe({1979.0000, -0.0056}, {1815.6666, -0.0056}, {2142.3333, -0.0056}),
-        Keyframe({2469.0000, -0.1445}, {2305.6667, -0.1445}, {2632.3333, -0.1445}),
+        Keyframe({2961.0000, -0.1445}, {2894.3333, -0.1445}, {3027.6667, -0.1445}),
+        Keyframe({3161.0000, -0.1445}, {3094.3333, -0.1445}, {3227.6667, -0.1445}),
 	});
 
-	addRotationKeyframes(2,{
-        Keyframe({1979.0000, 0.1981}, {1815.6666, 0.1981}, {2142.3333, 0.1981}),
-        Keyframe({2469.0000, 0.1006}, {2305.6667, 0.1006}, {2632.3333, 0.1006}),
+	addRotationKeyframes(2, {
+        Keyframe({2961.0000, 0.1006}, {2894.3333, 0.1006}, {3027.6667, 0.1006}),
+        Keyframe({3161.0000, 0.1006}, {3094.3333, 0.1006}, {3227.6667, 0.1006}),
 	});
 
 	addRotationKeyframes(3, {
-        Keyframe({1979.0000, 0.7782}, {1815.6666, 0.7782}, {2142.3333, 0.7782}),
-        Keyframe({2469.0000, 0.9583}, {2305.6667, 0.9583}, {2632.3333, 0.9583}),
+        Keyframe({2961.0000, 0.9583}, {2894.3333, 0.9583}, {3027.6667, 0.9583}),
+        Keyframe({3161.0000, 0.9583}, {3094.3333, 0.9583}, {3227.6667, 0.9583}),
 	});
 }
