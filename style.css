@@ -1,0 +1,72 @@
+html, body {
+	margin: 0;
+	height: 100%;
+	font-family: "Lora", serif;
+}
+
+h1 {
+	font-size: 72px;
+	margin: 16px 0;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+h1, h3 {
+	text-align: center;
+}
+
+section {
+	padding: 16px;
+	text-align: center;
+}
+
+section div {
+	text-align: left;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+section:nth-child(even) {
+	background-color: #f5f5f5;
+}
+
+.description {
+	font-size: 22px;
+}
+
+.credits {
+	text-align: center;
+}
+
+img {
+	display: block;
+	margin: 16px 0;
+}
+
+img, iframe {
+	width: 100%;
+	text-align: center;
+}
+
+iframe {
+	height: 562px;
+}
+
+.downloads {
+	text-align: center;
+	font-size: 0;
+	margin: 0 -16px;
+}
+
+.downloads a {
+	font-size: 24px;
+	background: cornflowerblue;
+	border-radius: 5px;
+	padding: 8px;
+	color: white;
+	text-decoration: none;
+	margin: 0;
+	margin: 0 8px;
+}

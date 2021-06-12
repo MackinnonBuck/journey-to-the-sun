@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Journey to the Sun</title>
+	<link href="https://fonts.googleapis.com/css?family=Lora&display=block" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+	<section>
+		<div>
+			<h1>Journey to the Sun</h1>
+			<p class="description">A music video to Parov Stelar's electroswing song "The Sun" that tells the story of an astronaut returning from a distant space station to his comfortable home within the inner solar system.</p>
+			<p class="credits"><strong>Story, animation, and rendering by</strong><br />Keavon Chambers and Mackinnon Buck</p>
+			<br />
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/R-mBlP7hfUY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+	</section>
+	<section>
+		<div>
+			<h3>Scene Snapshots</h3>
+			<img src="pictures/scene1a.png">
+			<img src="pictures/scene1b.png">
+			<img src="pictures/scene2.png">
+			<img src="pictures/scene3.png">
+			<img src="pictures/scene4.png">
+			<img src="pictures/scene5.png">
+			<img src="pictures/scene6.png">
+			<img src="pictures/scene7.png">
+		</div>
+	</section>
+	<section>
+		<div>
+			<h3>Implementation Notes</h3>
+			<ul>
+				<li>All scenes rendered using C++ with OpenGL</li>
+				<li>Scenes and animations created in Blender</li>
+				<li>Exported animation F-curves with a <a href="https://github.com/MackinnonBuck/journey-to-the-sun/blob/blender-export/export.py">custom script</a></li>
+				<li>Interpolated the Bezier F-curves for in-engine rendering</li>
+				<li>PBR shaders written for prettier lighting</li>
+				<li>Bloom post-processing effect for light bleed</li>
+				<li>Particle system for the space dust</li>
+				<li>Billboard animation for the ship's engine plasma trails</li>
+			</ul>
+		</div>
+	</section>
+	<section>
+		<div>
+			<h3>Model Credits</h3>
+			<ul>
+				<li><a href="https://www.behance.net/gallery/50179455/DISCOVERY-(FREE-3D-MODEL-DOWNLOAD)">Astronaut</a></li>
+				<li><a href="https://www.cgtrader.com/free-3d-models/space/spaceship/spacestation-sci-fi">Space station</a></li>
+				<li>Ship and other models by Keavon Chambers</li>
+			</ul>
+		</div>
+	</section>
+	<section>
+		<div>
+			<h3>Project Code</h3>
+			<div class="downloads">
+				<a href="https://github.com/MackinnonBuck/journey-to-the-sun">GitHub Repository</a>
+			</div>
+			<br />
+			<ul>
+				<li>Each scene is broken into a separate branch in the repository.</li>
+				<li>Shots were rendered through a fullscreen capture and edited in Premiere Pro.</li>
+			</ul>
+		</div>
+	</section>
+</body>
+</html>
