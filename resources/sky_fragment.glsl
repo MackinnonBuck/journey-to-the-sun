@@ -12,6 +12,7 @@ void main()
 color.rgb = texture(tex, frag_tex).rgb;
 //color.rg = frag_tex;
 //color.b = 0;
-color.rgb *= vec3(0.1, 0.5, 1.5);
+color.rgb *= vec3(1.5, 0.5, 0.25);
+color.r += 0.1;
 color.a=1;
 }
