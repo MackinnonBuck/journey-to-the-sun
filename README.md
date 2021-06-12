@@ -2,6 +2,8 @@
 
 An OpenGL music video submitted as our final project for CSC 474 at California Polytechnic State University, San Luis Obispo.
 
+https://youtu.be/R-mBlP7hfUY
+
 ## Authors
 
 [Mackinnon Buck](https://github.com/MackinnonBuck)
